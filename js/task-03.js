@@ -14,20 +14,9 @@ const images = [
 ];
 
 const galleryList = document.querySelector('.gallery');
-const fragment = document.createDocumentFragment();
 
+const imagesMarkup = images.map(image => {
+  return `<li class="gallery-item"><img src="${image.url}" alt="${image.alt}" class="gallery-img"></li>`;
+}).join('');
 
-images.forEach((image) => {
-
-  const listItem = document.createElement('li');
-  listItem.classList.add('galery-item');
-
-  const img = document.createElement('img');
-  img.src = image.url;
-  img.alt = image.alt;
-
-  listItem.appendChild(img);
-  fragment.appendChild(listItem);
-});
-
-galleryList.appendChild(fragment);
+galleryList.insertAdjacentHTML("beforeend", imagesMarkup);
